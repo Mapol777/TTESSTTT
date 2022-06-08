@@ -1,15 +1,130 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11134" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="19455" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch44"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11055"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="19454"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller id="AgC-eL-Hgc">
+                    <items>
+                        <imageView alignment="center" verticalAlignment="center" image="logo" id="dQc-8i-2u1"/>
+                        <label alignment="center" verticalAlignment="center" text="CookBook" id="gm3-cn-4MI">
+                            <fontDescription key="font" style="UICTFontTextStyleTitle2"/>
+                        </label>
+                    </items>
+                    <connections>
+                        <segue destination="Pjz-kC-crw" kind="relationship" relationship="nextPage" id="r9q-ta-kCv"/>
+                    </connections>
+                </controller>
             </objects>
+            <point key="canvasLocation" x="-26" y="-44"/>
+        </scene>
+        <!--Table RecipesIC-->
+        <scene sceneID="0Xk-1w-Gnh">
+            <objects>
+                <controller id="Pjz-kC-crw" customClass="TableRecipesIC" customModule="CookBook_WatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="Ua4-Dt-08B">
+                            <items>
+                                <tableRow id="Am8-F4-4ac" customClass="RowTable">
+                                    <group key="rootItem" width="1" alignment="left" id="gLk-Hw-7eA">
+                                        <items>
+                                            <imageView width="30" height="30" alignment="left" image="swift" catalog="system" id="vHp-Gr-ekk">
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </imageView>
+                                            <label alignment="left" verticalAlignment="center" text="RecName" id="odi-PP-djI"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="rowPicture" destination="vHp-Gr-ekk" id="Fvh-7g-MMO"/>
+                                        <outlet property="rowPictuture" destination="vHp-Gr-ekk" id="xYI-gO-kbe"/>
+                                        <outlet property="rowRecipeName" destination="odi-PP-djI" id="ghT-3j-MRv"/>
+                                        <segue destination="MUG-5I-1Vy" kind="push" id="aeC-rs-Muz"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="Ua4-Dt-08B" id="a6T-ZN-Sck"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-27.34782608695652" y="-307.36607142857144"/>
+        </scene>
+        <!--Detail RecipeIC-->
+        <scene sceneID="rG3-Zk-Y2N">
+            <objects>
+                <controller id="MUG-5I-1Vy" customClass="DetailRecipeIC" customModule="CookBook_WatchKit_Extension">
+                    <items>
+                        <group width="1" alignment="left" id="rq5-bd-S5u">
+                            <items>
+                                <label height="20" alignment="left" text="IC" id="sZb-vR-Ljn"/>
+                                <label alignment="center" verticalAlignment="center" text="name" id="OM8-Ie-s5w"/>
+                            </items>
+                        </group>
+                        <imageView alignment="center" id="NDn-OJ-QC9"/>
+                        <group width="1" alignment="left" layout="vertical" id="7qh-5S-LiL">
+                            <items>
+                                <label alignment="left" text="Автор:" id="0lp-Rm-856"/>
+                                <label alignment="left" text="authorName" id="8LP-hr-L5d"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" layout="vertical" id="t3i-X9-Lbg">
+                            <items>
+                                <label alignment="left" text="Описание:" id="age-Q8-LOw"/>
+                                <label alignment="left" text="recipeText" id="Orq-Zq-t5K"/>
+                            </items>
+                        </group>
+                        <button alignment="left" id="bK1-8K-Xdk">
+                            <group key="contentGroup" width="1" alignment="left" id="kla-YB-F9W">
+                                <items>
+                                    <label alignment="left" text="text recipe" id="jso-eU-PRh"/>
+                                </items>
+                            </group>
+                            <connections>
+                                <segue destination="j3q-b7-wNf" kind="modal" id="loo-1E-AnQ"/>
+                            </connections>
+                        </button>
+                        <slider width="1" alignment="left" maximum="0.0" steps="5" minimumImage="star" catalog="system" maximumImage="star.fill" id="WqP-eU-UlW">
+                            <color key="color" red="0.97254901960784312" green="0.70196078431372544" blue="0.011764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="changeRating:" destination="MUG-5I-1Vy" id="iYE-vW-Mse"/>
+                            </connections>
+                        </slider>
+                    </items>
+                    <connections>
+                        <outlet property="authorRecipe" destination="8LP-hr-L5d" id="j4A-OB-MtC"/>
+                        <outlet property="iconRecipe" destination="sZb-vR-Ljn" id="vt6-gh-Szu"/>
+                        <outlet property="imageRecipe" destination="NDn-OJ-QC9" id="4cF-Em-k36"/>
+                        <outlet property="nameRecipe" destination="OM8-Ie-s5w" id="zzY-6k-jYG"/>
+                        <outlet property="ratingRecipe" destination="WqP-eU-UlW" id="mqy-DF-8Ag"/>
+                        <outlet property="textRecipe" destination="Orq-Zq-t5K" id="xRv-cl-8nR"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="212.86956521739128" y="-307.74553571428572"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="4lg-Ob-e0E">
+            <objects>
+                <controller id="j3q-b7-wNf">
+                    <items>
+                        <label alignment="left" text="Label" numberOfLines="0" id="hBR-7W-p36"/>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="213" y="-44"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="96" height="96"/>
+        <image name="star" catalog="system" width="128" height="115"/>
+        <image name="star.fill" catalog="system" width="128" height="115"/>
+        <image name="swift" catalog="system" width="128" height="112"/>
+    </resources>
 </document>
